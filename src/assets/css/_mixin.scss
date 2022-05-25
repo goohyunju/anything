@@ -1,0 +1,29 @@
+@import "~@/assets/css/icon";
+
+@mixin flex($inline: false, $direction, $wrap, $justify, $align) {
+  display: if($inline, inline-flex, flex);
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin ellipsis($line-count: 1, $line-height) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if($line-count < 2) {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    display: -moz-box;
+    box-orient: vertical;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    max-height: $line-height * $line-count;
+    line-height: $line-height;
+    word-wrap: break-word;
+    line-clamp: $line-count;
+    -webkit-line-clamp: $line-count;
+    -moz-line-clamp: $line-count;
+  }
+}
