@@ -1,6 +1,5 @@
 <template>
   <section class="movie-list">
-    <loader-spinner v-if="loading"/>
     <p 
       v-if="message" class="movie-message"
       :class="{'movie--no-result': !movies.length}"
@@ -14,17 +13,21 @@
         :movie="movie"
       ></movie-item>
     </ul>
+
+    <skeleton-UI v-if="loading" :active="'collection'"></skeleton-UI>
+    <loader-spinner v-if="loading" absolute :backgroundColor="'transparent'"/>
   </section>
 </template>
 
 <script>
 import movieItem from "@/components/movieItem"
 import loaderSpinner from "@/components/loaderSpinner"
+import skeletonUI from "./skeleton.vue"
 
 export default {
   name: "movieList",
   components: {
-    movieItem, loaderSpinner
+    movieItem, loaderSpinner, skeletonUI
   },
   data() {
     return {
@@ -52,10 +55,10 @@ export default {
 
   .movie-list {
     width: 1200px;
-    margin: 100px auto;
+    margin: 100px auto !important;
     padding: 24px;
     position: relative;
-    background-color: #eeeeee;
+    background-color: $main-black;
   }
   .movie-loading {
     @include flex(false, row, nowrap, center, center);

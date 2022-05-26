@@ -20,6 +20,7 @@ export default {
     },
     resetMovies(state) {
       state.movies = [];
+      state.movie = {};
     },
   },
   actions: {
@@ -30,7 +31,7 @@ export default {
       const movie = await _fetchMovie({id});
 
       commit("updateState", {
-        movie: movie,
+        movie: movie.data,
         loading: false,
       });
     },

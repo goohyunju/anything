@@ -2,7 +2,7 @@
   <main class="search-page">
     <h1 class="search-title">영화 검색</h1>
     <search-form></search-form>
-    <movie-list></movie-list>
+    <movie-list v-if="movie_list.length"></movie-list>
   </main>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   components: {
     searchForm,
     movieList,
+  },
+  computed: {
+    movie_list() {
+      return this.$store.state.movie.movies;
+    },
   },
 }
 </script>
@@ -34,6 +39,7 @@ export default {
       font-size: 32px;
       color: $main-orange;
       text-align: center;
+      margin-bottom: 32px;
     }
   }
 

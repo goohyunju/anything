@@ -2,7 +2,10 @@
   <div 
     v-if="active == 'collection'"
     class="skeleton skeleton-movie-collection"
-    :style="{opacity: opacity * 0.01}"
+    :style="{
+      opacity: opacity * 0.01, 
+      margin: margin ? '0 auto' : 0,
+    }"
   >
     <div 
       v-for="index in 5"
@@ -23,6 +26,10 @@ export default {
     active: {
       type: String,
       default: "",
+    },
+    margin: {
+      type: Boolean,
+      default: false,
     },
     opacity: {
       type: Number,
@@ -65,7 +72,7 @@ export default {
     gap: 16px;
 
     .skeleton__movie {
-      width: calc(20% - 12.75px);
+      width: calc(20% - 12.8px);
     }
     .skeleton__poster {
       width: 100%;

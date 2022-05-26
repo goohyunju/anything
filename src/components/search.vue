@@ -110,6 +110,70 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/css/global.scss";
+
+  .search-movie {
+    @include flex(true, row, nowrap, center, center);
+
+    gap: 16px;
+    margin: 0 auto;
+    padding: 12px 20px !important;
+    border-radius: 40px;
+    border: 2px solid $main-orange !important;
+    background-color: white;
+
+    * {
+      font-family: $ptd;
+    }
+
+    .search__field {
+      height: 32px;
+      border: 0;
+      padding: 0 16px;
+      font-size: 16px;
+      background-color: white;
+    }
+    .search__select {
+      width: 110px;
+      height: 32px;
+      padding: 0 20px 0 8px;
+      font-size: 16px;
+      color: gray;
+      background: white url(@/assets/image/mini-chevron-down.svg) no-repeat right 8px top 14px;
+      background-size: 10px auto;
+
+      &:focus,
+      &:active {
+        border: 0;
+        outline: 0;
+      }
+      &:focus-visible {
+        border: 0;
+        outline: 0;
+        color: $main-orange;
+      }
+    }
+
+    .search__title {
+      width: 400px;
+      font-weight: 600;
+    }
+    .search__quantity {
+      width: 70px;
+    }
+    .search__year {
+      width: 140px;
+    }
+    .search__apply {
+      height: 32px;
+      padding: 0 16px;
+      font-size: 18px;
+      color: $main-orange;
+      font-weight: 600;
+      background-color: white;
+    }
+  }
+
 
 </style>

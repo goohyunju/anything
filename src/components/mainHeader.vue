@@ -1,7 +1,9 @@
 <template>
   <header class="main-header">
     <h1 class="main-logo">
-      <a href="/" class="logo__link">Kinderfest</a>
+      <a href="/" class="logo__link">
+        <img class="logo__image" src="../assets/image/Kinderfest-logo.svg" alt="kinderfest | 킨더페스트 ∙ 세상의 모든 영화 검색">
+      </a>
     </h1>
     <nav class="main-nav">
       <router-link 
@@ -58,10 +60,12 @@ export default {
     background-color: $main-black;
   }
   .main-logo {
-    margin-right: 24px;
+    margin-right: 16px;
 
-    .logo__link {
-      color: $main-orange;
+    .logo__image {
+      display: block;
+      width: auto;
+      height: 30px;
     }
   }
 

@@ -15,14 +15,19 @@
       >{{genre.name}}</a>
     </nav>
 
+    <skeleton-UI v-if="loading" :active="'collection'" :margin="true"></skeleton-UI>
     
     <section 
       v-for="genre in recommand_tag"
       :key="genre.value"
       class="collection"
-      :class="`collection-${genre.value}`"
+      :class="[`collection-${genre.value}`]"
     >
-      <h2 :id="genre.value" class="collection__title">#{{genre.name}}</h2>
+      <h2 
+        v-if="!loading"
+        :id="genre.value" 
+        class="collection__title"
+      >#{{genre.name}}</h2>
 
       <Splide 
         v-if="!loading"
@@ -41,16 +46,17 @@
           :key="movie.imdbID"
           class="movie__item"
         >
-          <div class="splide__slide__container movie__poster-cover">
-            <img :src="movie.Poster" alt="" class="movie__poster">
-          </div>
-          <p class="movie__title">{{movie.Title}}</p>
-          <p class="movie__year">{{parseInt(movie.Year, 10)}}</p>
+          <a :href="`/movie/${movie.imdbID}`" class="movie__router">
+            <div class="splide__slide__container movie__poster">
+              <img :src="movie.Poster" :alt="movie.Title + 'poster'" class="movie__poster-image">
+            </div>
+            <p class="movie__title">{{movie.Title}}</p>
+            <p class="movie__year">{{parseInt(movie.Year, 10)}}</p>
+          </a>
         </SplideSlide>
 
       </Splide>
       
-      <skeleton-UI v-if="loading" :active="'collection'"></skeleton-UI>
     </section> 
   </main>
 
@@ -177,35 +183,9 @@ export default {
   .collection-movie-list {
     position: relative;
 
-    .movie__poster-cover {
-      width: 100%;
-      height: 338px;
-      overflow: hidden;
-      border-radius: 6px;
-      margin-bottom: 8px;
-
-      .movie__poster {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-      }
+    .movie__item {
+      @extend .movie-list--black-theme;
     }
-    
-    .movie__title {
-      @include ellipsis(1, 1);
-
-      width: 100%;
-      margin-bottom: 6px;
-      color: white;
-      font-weight: 600;
-    }
-    .movie__year {
-      font-size: 16px;
-      color: white;
-    }
-
   }
   // ***** arrows ***** //
   ::v-deep .splide__arrows {
@@ -216,6 +196,7 @@ export default {
     top: 0;
     z-index: 11;
     pointer-events: none;
+    transition: all 1s ease;
 
     .splide__arrow {
       width: 80px;
