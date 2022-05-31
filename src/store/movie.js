@@ -10,6 +10,7 @@ export default {
     message: "영화를 검색해보세요!",
     id: "",
     year: new Date().getFullYear(),
+    arrow_path: "M18.676 13.619a.5.5 0 0 1 .705.057l5 5.887a.5.5 0 0 1 .006.64l-5 6.114a.5.5 0 1 1-.774-.634l4.736-5.79-4.73-5.57a.5.5 0 0 1 .057-.704Z",
   }),
   getters: {  },
   mutations: {

@@ -1,10 +1,22 @@
 <template>
-  <main v-show="!loading" class="movie-detail-page" :style="{backgroundImage: `url(${movie.Poster})`}">
+  <main 
+    v-show="!loading" 
+    class="movie-detail-page" 
+    :class="{
+      'movie--no-poster': !movie.Poster || movie.Poster == 'N/A'
+    }"
+    :style="{
+      backgroundImage: !movie.Poster || movie.Poster == 'N/A' ? 'none' : 'url(' + String(movie.Poster).replace('SX300', 'SX700') + ')'
+    }"
+  >
     <section class="movie-detail">
       <h2 class="detail__item movie__title">{{movie.Title}}</h2>
       <p class="detail__item movie__info-data">
         <span class="info__item year">{{movie.Year}}</span>
-        <span class="info__item runtime">{{parseInt(movie.Runtime, 10)}}분</span>
+        <span 
+          v-if="Number(movie.Runtime) == NaN"
+          class="info__item runtime
+        ">{{parseInt(movie.Runtime, 10)}}분</span>
         <span class="info__item genre">{{movie.Genre}}</span>
       </p>
       <div v-if="rates.length !== 0" class="detail__item movie__rates">
@@ -20,7 +32,7 @@
           {{rate.value}}
         </span>
       </div>
-      <div class="detail__item movie__plot">
+      <div v-if="movie.Plot != 'N/A'" class="detail__item movie__plot">
         {{movie.Plot}}
       </div>
       <div class="detail__item movie__directing">
@@ -40,39 +52,42 @@
       <div class="detail__item movie__box-office category-label">
         <span class="category__name">매출</span> {{movie.BoxOffice}}
       </div>
-        
-      <Splide 
-        class="related-movies"
-        :options="{ 
-          perPage: 5,
-          gap: 16,
-          perMove: 5,
-          pagination: false,
-        }"
-      >
-          <!-- arrowPath: arrow_path, -->
-        <SplideSlide
-          v-for="movie in related_movies"
-          :key="movie.imdbID"
-          class="related__item"
+      
+      <div class="related-movies-wrapper" v-if="related_movies.length">
+        <h3 class="related-movies__title">관련 영화</h3>
+        <Splide 
+          class="related-movies"
+          :options="{ 
+            perPage: 4,
+            gap: 16,
+            perMove: 2,
+            pagination: false,
+            arrowPath: arrow_path,
+          }"
         >
-          <a :href="`/movie/${movie.imdbID}`" class="movie__router">
-            <div class="movie__poster">
-              <p class="movie__poster--inactive">
-                <span class="poster__title">No Poster</span>
-              </p>
-              <img 
-                v-if="movie.Poster != 'N/A'" 
-                :src="movie.Poster" 
-                :alt="movie.Title + 'Poster'" 
-                class="movie__poster-image"
-              >
-            </div>
-            <p class="movie__title">{{movie.Title}}</p>
-          </a>
-        </SplideSlide>
-      </Splide>
-  </section>
+          <SplideSlide
+            v-for="movie in related_movies"
+            :key="movie.imdbID"
+            class="related__item"
+          >
+            <a :href="`/movie/${movie.imdbID}`" class="movie__router">
+              <div class="movie__poster">
+                <p class="movie__poster--inactive">
+                  <span class="poster__title">No Poster</span>
+                </p>
+                <img 
+                  v-if="movie.Poster != 'N/A'" 
+                  :src="movie.Poster" 
+                  :alt="movie.Title + 'Poster'" 
+                  class="movie__poster-image"
+                >
+              </div>
+              <p class="movie__title">{{movie.Title}}</p>
+            </a>
+          </SplideSlide>
+        </Splide>
+      </div>
+    </section>
   </main>
 
   <loader-spinner v-if="loading" :backgroundColor="'transparent'" fixed></loader-spinner>
@@ -100,6 +115,9 @@ export default {
     },
     loading() {
       return this.$store.state.movie.loading;
+    },
+    arrow_path() {
+      return this.$store.state.movie.arrow_path;
     },
   },
   methods: {
@@ -174,28 +192,30 @@ export default {
   mounted() {
     this.getMovie();
   },
-  unmounted() {
-  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global.scss";
 
   .movie-detail-page {
     width: 100%;
     color: white;
     background-color: $main-black;
-    background-size: auto 100%;
+    background-size: auto calc(100% - $header-height);
+    background-position: left bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    &.movie--no-poster {
+      background-image: url(@/assets/image/kinderfest-poster.svg) !important;
+    }
   }
 
   .movie-detail {
     @include flex(false, column, nowrap, flex-start, flex-start);
 
     position: relative;
-    min-height: calc(100vh - $header-height);
+    min-height: 100vh;
     padding: 100px 24px 100px 48vw;
     background-image: linear-gradient(to right, transparent, $main-black 40%);
 
@@ -260,16 +280,30 @@ export default {
       color: $skeleton-gray;
     }
   }
-  
-  .related-movies {
-    width: 100%;
 
+  .movie__box-office {
+    margin-bottom: 60px;
+  }
+  
+  .related-movies-wrapper {
+    width: calc(100% - 40px);
+    
+    .related-movies__title {
+      margin-bottom: 16px;
+    }
+  }
+  .related-movies {
+    
     .related__item {
       @extend .movie-list--black-theme;
 
       .movie__poster {
-        // width
+        width: 100%;
+        height: 235px;
       }
     }
   }
-</style>
+  ::v-deep .splide__arrows {
+    @extend .splide-arrow--orange-theme;
+  }
+</style>  

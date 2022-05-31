@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router"
 
 import homeView from "@/home"
 import searchView from "@/search"
-import aboutView from "@/about"
 import movieView from "@/movie"
 import movieCollection from "@/movieCollection"
+import notFound404 from "@/notFound404"
 
 export default createRouter({
   history: createWebHistory(),
@@ -20,11 +20,6 @@ export default createRouter({
       component: searchView,
     },
     {
-      path: "/about",
-      name: "about",
-      component: aboutView,
-    },
-    {
       path: "/movie",
       name: "movieCollection",
       component: movieCollection,
@@ -34,5 +29,9 @@ export default createRouter({
       name: "movie",
       component: movieView,
     },
+    {
+      path: "/:notFound(.*)",
+      component: notFound404,
+    }
   ]
 })

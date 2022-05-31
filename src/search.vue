@@ -25,13 +25,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global";
 
   .search-page {
     @include flex(false, column, nowrap, center, center);
 
     width: 100%;
-    min-height: calc(100vh - $header-height);
+    min-height: 100vh;
     padding: 100px 0;
     background-color: $main-black;
 

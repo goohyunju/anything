@@ -51,7 +51,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global.scss";
 
   .movie-list {
     width: 1200px;

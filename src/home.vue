@@ -15,7 +15,7 @@ export default {
   name: 'homeView',
   components: {
     mainCarousel,
-  }
+  },
 }
 </script>
 

@@ -73,6 +73,11 @@ export default {
   components: {
     Splide, SplideSlide, loaderSpinner, skeletonUI,
   },
+  computed: {
+    arrow_path() {
+      return this.$store.state.movie.arrow_path;
+    },
+  },
   data() {
     return {
       recommand_tag: [
@@ -89,7 +94,6 @@ export default {
       loading: false,
       active_tag: "love",
       genre_data: {},
-      arrow_path: "M18.676 13.619a.5.5 0 0 1 .705.057l5 5.887a.5.5 0 0 1 .006.64l-5 6.114a.5.5 0 1 1-.774-.634l4.736-5.79-4.73-5.57a.5.5 0 0 1 .057-.704Z",
     }
   },
   methods: {
@@ -117,18 +121,16 @@ export default {
 
 <style scoped>
 @import '@splidejs/vue-splide/css/core';
-
 </style>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global.scss";
 
   .movie-collection-page {
     width: 100%;
-    min-height: calc(100vh - $header-height);
-    background-color: $main-black;
+    min-height: 100vh;
     padding: 100px 0;
     font-family: $ptd;
+    background-color: $main-black;
   }
 
   .collection-title {
@@ -187,58 +189,9 @@ export default {
       @extend .movie-list--black-theme;
     }
   }
-  // ***** arrows ***** //
+  
   ::v-deep .splide__arrows {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 11;
-    pointer-events: none;
-    transition: all 1s ease;
-
-    .splide__arrow {
-      width: 80px;
-      height: 80px;
-      pointer-events: auto;
-      border: 0;
-      outline: 0;
-      padding: 0;
-      border-radius: 50%;
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      margin-top: -26px;
-      transition: all 0.3s ease;
-      background-color: rgba($main-orange, 0.5);
-
-      &:disabled {
-        opacity: 0.3;
-        background: rgba(white, 0.5);
-      }
-      &:hover {
-        transition: all 0.3s ease;
-        background-color: rgba($main-orange, 0.8);
-      }
-
-      &.splide__arrow--prev {
-        left: 0;
-        transform: translate(-50%, -50%);
-
-        svg {
-          transform: rotate(-180deg) scale(1.5);
-        }
-      }
-      &.splide__arrow--next {
-        right: 0;
-        transform: translate(50%, -50%);
-      }
-
-      svg {
-        transform: scale(1.5);
-      }
-    }
+    @extend .splide-arrow--orange-theme;
   }
 
 </style>

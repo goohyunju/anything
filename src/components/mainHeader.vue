@@ -1,5 +1,10 @@
 <template>
-  <header class="main-header">
+  <header 
+    class="main-header"
+    :class="{
+      'header--active': header_active,
+    }"
+  >
     <h1 class="main-logo">
       <a href="/" class="logo__link">
         <img class="logo__image" src="../assets/image/Kinderfest-logo.svg" alt="kinderfest | 킨더페스트 ∙ 세상의 모든 영화 검색">
@@ -33,18 +38,38 @@ export default {
           name: 'Movie',
           href: '/movie'
         },
-        {
-          name: 'About',
-          href: '/about'
-        },
-      ]
+      ],
+      save_scroll: 0,
+      header_active: true,
     }
+  },
+  methods: {
+    scrollHeaderActive() {
+      const scroll = window.scrollY;
+      const direction = this.save_scroll - scroll;
+
+      if(scroll < 50) {
+        this.header_active = true;
+      } else if(scroll > 50) {
+        this.header_active = false;
+      }
+      
+      // if(direction <= 0) {
+      //   // down
+      // } else {
+      //   // up
+      // }
+      
+      this.save_scroll = scroll;
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrollHeaderActive);
   },
 }
 </script>
 
 <style lang='scss' scoped>
-@import "@/assets/css/global.scss";
 
   .main-header {
     @include flex(false, row, nowrap, flex-start, center);
@@ -57,7 +82,13 @@ export default {
     top: 0;
     left: 0;
     z-index: 19;
+    transition: background 0.3s ease;
     background-color: $main-black;
+
+    &.header--active {
+      transition: background 0.3s ease;
+      background-color: transparent;
+    }
   }
   .main-logo {
     margin-right: 16px;
@@ -74,7 +105,7 @@ export default {
     .nav__item {
       display: inline-block;
       width: 70px;
-      padding: 14px 0 2px;
+      padding: 12px 0 3px;
       font-size: 18px;
       color: white;
       text-align: center;

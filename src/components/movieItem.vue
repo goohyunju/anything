@@ -39,4 +39,5 @@ export default {
     width: calc(20% - 19.2px);
     position: relative;
   }
+
 </style>

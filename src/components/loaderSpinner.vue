@@ -85,7 +85,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global";
 
   .loader-component {
     width: 100%;

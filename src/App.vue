@@ -26,7 +26,6 @@ export default {
   #app {
     min-height: 100%;
     font-family: 'pretendard';
-    padding-top: 55px;
     box-sizing: border-box;
   }
 </style>
