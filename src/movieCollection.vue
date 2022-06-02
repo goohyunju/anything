@@ -15,7 +15,6 @@
       >{{genre.name}}</a>
     </nav>
 
-    <skeleton-UI v-if="loading" :active="'collection'" :margin="true"></skeleton-UI>
     
     <section 
       v-for="genre in recommand_tag"
@@ -29,6 +28,7 @@
         class="collection__title"
       >#{{genre.name}}</h2>
 
+      <skeleton-UI v-if="loading" :active="'collection'" :margin="true"></skeleton-UI>
       <Splide 
         v-if="!loading"
         :options="{ 
@@ -128,7 +128,7 @@ export default {
   .movie-collection-page {
     width: 100%;
     min-height: 100vh;
-    padding: 100px 0;
+    padding: 160px 0 100px;
     font-family: $ptd;
     background-color: $main-black;
   }

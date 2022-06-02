@@ -58,7 +58,7 @@
         <Splide 
           class="related-movies"
           :options="{ 
-            perPage: 4,
+            perPage: 5,
             gap: 16,
             perMove: 2,
             pagination: false,
@@ -192,12 +192,17 @@ export default {
   mounted() {
     this.getMovie();
   },
+  unmounted() {
+    this.$store.commit("movie/resetMoives");
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 
   .movie-detail-page {
+    @include flex(false, row, nowrap, flex-end, center);
+
     width: 100%;
     color: white;
     background-color: $main-black;
@@ -215,9 +220,11 @@ export default {
     @include flex(false, column, nowrap, flex-start, flex-start);
 
     position: relative;
+    width: calc(100% - 42vh);
     min-height: 100vh;
-    padding: 100px 24px 100px 48vw;
-    background-image: linear-gradient(to right, transparent, $main-black 40%);
+    margin: 0 0 auto;
+    padding: 100px 24px 100px 19%;
+    background-image: linear-gradient(to right, transparent, $main-black 18%);
 
     .detail__item {
       width: 100%;
@@ -299,7 +306,7 @@ export default {
 
       .movie__poster {
         width: 100%;
-        height: 235px;
+        height: 250px;
       }
     }
   }

@@ -44,9 +44,6 @@ export default {
       return this.$store.state.movie.message;
     },
   },
-  mounted() {
-    console.log(this.movies);
-  }
 }
 </script>
 

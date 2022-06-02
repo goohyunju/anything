@@ -105,8 +105,6 @@ export default {
       });
     },
   },
-  mounted() {
-  },
 }
 </script>
 

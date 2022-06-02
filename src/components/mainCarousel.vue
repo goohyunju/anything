@@ -7,6 +7,9 @@
       perMove: 1,
       pagination: true,
       arrows: false,
+      autoplay: true,
+      interval: 5000,
+      type: 'loop'
     }"
   >
     <SplideSlide 
@@ -15,13 +18,28 @@
       class="carousel__item"
     >
       <a :href="cs.link" class="carousel__router">
-        <div class="carousel__content content--right-bottom">
+        <div 
+          class="carousel__content"
+          :class="[`content--${cs.style.title_position[0]}-${cs.style.title_position[1]}`]"
+        >
           <div class="carousel__title">
             <img :src="cs.title_image" :alt="cs.title" class="title__image">
           </div>
-          <p class="carousel__sub-title text--white text--right" v-html="cs.sub_title"></p>
+          <p 
+            class="carousel__sub-title" 
+            :style="{
+              textAlign: cs.style.text_align,
+              color: cs.style.color,
+            }"
+            v-html="cs.sub_title"
+          ></p>
         </div>
-        <img :src="cs.image" :alt="cs.title + 'official trailer image'" class="carousel__image image--left">
+        <img 
+          :src="cs.image" 
+          :alt="cs.title + 'official trailer image'" 
+          class="carousel__image"
+          :class="[`image--${cs.style.image_position}`]"
+        >
       </a>
     </SplideSlide>
   </Splide>
@@ -45,22 +63,59 @@ export default {
           sub_title: "뉴 올리언스에서 LA까지,<br>푸드트럭 셰프의 맛있는 도전!",
           image: require("@/assets/image/main-carousel1.jpg"),
           link: "movie/tt2883512",
-        }
-      ]
+          style: {
+            title_position: ["right", "bottom"],
+            color: "white",
+            text_align: "right",
+            image_position: "left",
+          }
+        },
+        {
+          name: "little-forest",
+          title: "리틀 포레스트",
+          title_image: require("../assets/image/little-forest-logo.png"),
+          sub_title: "잠시 쉬어가도 괜찮아!",
+          image: require("@/assets/image/main-carousel3.jpg"),
+          link: "movie/tt6083230",
+          style: {
+            title_position: ["left", "center"],
+            color: "white",
+            text_align: "left",
+            image_position: "right",
+          }
+        },
+        {
+          name: "accepted",
+          title: "억셉티트",
+          title_image: require("../assets/image/accepted-logo.png"),
+          sub_title: '당신에게 "yes"를 전합니다',
+          image: require("@/assets/image/main-carousel2.jpg"),
+          link: "movie/tt0384793",
+          style: {
+            title_position: ["left", "center"],
+            color: "white",
+            text_align: "left",
+            image_position: "right",
+          }
+        },
+      ],
     }
   },
 }
 </script>
 
+<style scoped>
+  @import '@splidejs/vue-splide/css/core';
+</style>
+
 <style lang="scss" scoped>
-@import '@splidejs/vue-splide/css/core';
 
   .main-carousel {
     width: 100%;
     height: 100vh;
-    position: relative;
     overflow: hidden;
     font-family: $ptd;
+    position: relative;
     background-color: black;
   }
 
@@ -85,14 +140,18 @@ export default {
       
       &.content--right-bottom {
         @include flex(false, column, nowrap, flex-end, flex-end);
-
-        .carousel__title {
-          text-align: right;
-        }
+      }
+      &.content--left-center {
+        @include flex(false, column, nowrap, center, flex-start);
       }
     }
     .carousel__title {
       margin-bottom: 16px;
+
+      .title__image {
+        min-width: 400px;
+        max-width: 500px;
+      }
     }
     .carousel__sub-title {
       font-size: 32px;
@@ -109,6 +168,32 @@ export default {
 
       &.image--left {
         object-position: left center;
+      }
+    }
+  }
+
+  // pagination
+  ::v-deep .splide__pagination {
+    @include flex(false, row, nowrap, center, center);
+
+    width: 100%;
+    gap: 6px;
+    position: absolute;
+    left: 0;
+    bottom: 24px;
+    z-index: 9;
+
+    .splide__pagination__page {
+      width: 15px;
+      height: 15px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      background-color: white;
+
+      &.is-active {
+        width: 30px;
+        transition: all 0.3s ease;
+        background-color: $main-orange;
       }
     }
   }

@@ -21,6 +21,9 @@ export default {
       return this.$store.state.movie.movies;
     },
   },
+  mounted() {
+    this.$store.commit("movie/resetMovies");
+  }
 }
 </script>
 
