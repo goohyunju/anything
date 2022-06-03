@@ -15,18 +15,91 @@
             ></movie-item>
           </template>
   
-          <loader-spinner v-if="cannes_competition.loading" :background="false" absolute></loader-spinner>
-          <skeleton-UI v-if="cannes_competition.loading" active="collection"></skeleton-UI>
+          <loader-spinner 
+            v-if="cannes_competition.loading" 
+            :background="false" 
+            :key="'canne-competition'"
+            absolute 
+          ></loader-spinner>
+          <skeleton-UI 
+            v-if="cannes_competition.loading" 
+            active="collection"
+            :key="'canne-competition'"
+          ></skeleton-UI>
         </ul>
       </div>
     </article>
 
     <article class="banner banner-dr-strange">
-      <h2 class="banner__title">
+      <h2 class="banner__title" data-aos="zoom-in" data-aos-delay="100">
         <img src="@/assets/image/banner-logo1.png" alt="닥터 스트레인지: 대 혼돈의 멀티버스" class="title__image">
-      </h2>
+      </h2> 
+      <p class="banner__content">
+        <a href="movie/tt9419884" data-aos="zoom-in" data-aos-delay="100" class="content__button">지금 보러가기</a>
+      </p>
+    </article>
+    
+    <article class="article article-marvle">
+      <div class="article__inner">
+        <h2 class="article__title">최신 마블 영화 정주행</h2>
+        <ul class="marvle-movies">
+          <template v-if="!marvle.loading">
+            <movie-item
+              v-for="marvle in marvle.data"
+              :key="marvle.imdbID"
+              :movie="marvle"
+            ></movie-item>
+          </template>
+        </ul>
+
+        <loader-spinner 
+          v-if="marvle.loading" 
+          :background="false" 
+          :key="'marvle'"
+          absolute 
+        ></loader-spinner>
+        <skeleton-UI 
+          v-if="marvle.loading" 
+          active="collection"
+          :key="'marvle'"
+        ></skeleton-UI>
+      </div>
     </article>
 
+    <article class="banner banner-advertisement">
+      <div class="banner__video" data-aos="fade-up" data-aos-delay="100">
+        <video class="video" autoplay loop>
+          <source src="./assets/video/5star.mp4" type="video/mp4">
+          <source src="./assets/video/5star.webm" type="video/webm">
+        </video>
+        <p class="video__text">Kinderfest</p>
+      </div>
+      <h2 class="advertisement__title">
+        <img src="./assets/image/Kinderfest-logo.svg" alt="Kinderfest" class="logo-image">
+        를 자유롭게 즐겨보세요!
+      </h2>
+      <ol class="kinderfest-membership">
+        <li 
+          class="membership__item"
+          v-for="member, index in membership.class"
+          :key="index"
+        >
+          <p class="membership__title">{{member.name}}</p>
+          <p class="membership__detail" v-html="member.detail"></p>
+
+          <ul class="membership__price">
+            <li class="price__item">
+              <span class="price__title">매 달</span>
+              <span class="price__won">{{member.month_price}} 원</span>
+            </li>
+            <li class="price__item">
+              <span class="price__title">매 년</span>
+              <span class="price__won">{{member.year_price}} 원</span>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </article>
   </main>
 </template>
 
@@ -35,6 +108,8 @@ import mainCarousel from './components/mainCarousel.vue'
 import movieItem from "./components/movieItem.vue"
 import loaderSpinner from './components/loaderSpinner.vue';
 import skeletonUI from './components/skeleton.vue';
+import AOS from "aos";
+import "aos/dist/aos.css"
 
 export default {
   name: 'homeView',
@@ -48,6 +123,39 @@ export default {
         data: [],
         loading: true,
       },
+      marvle: {
+        list: ["tt9419884", "tt0145487", "tt10872600", "tt9032400", "tt9376612", "tt3480822", "tt6320628", "tt4154796"],
+        data: [],
+        loading: true,
+      },
+      membership: {
+        class: [
+          {
+            name: "킨더 무제한",
+            detail: `PC, 스마트폰, 태블릿, 크롬캐스트에서
+            모든 컨텐츠를 즐겨요!<br><br>
+            <strong>720P</strong>의 고화질로 감상`,
+            month_price: 5600,
+            year_price: 56000,
+          },
+          {
+            name: "킨더 무제한 플러스",
+            detail: `PC, 스마트폰, 태블릿, 크롬캐스트, 스마트티비에서<br>
+            모든 컨텐츠를 즐겨요!<br><br>
+            <strong>1080P</strong>의 초고화질로 감상`,
+            month_price: 9600,
+            year_price: 92000,
+          },
+          {
+            name: "킨더 투게더",
+            detail: `PC, 스마트폰, 태블릿, 크롬캐스트, 스마트티비에서
+            모든 컨텐츠를 최대 3명과 함께 즐겨요!<br><br>
+            <strong>1080P</strong>의 초고화질로 감상`,
+            month_price: 13000,
+            year_price: 130000,
+          },
+        ]
+      }
     };
   },
   methods: {
@@ -73,17 +181,32 @@ export default {
   },
   mounted() {
     this.getMoviesByList(this.cannes_competition);
+    this.getMoviesByList(this.marvle);
+
   },
+  watch: {
+    "marvle.loading": function(prev, now) {
+      // if(!(now && !this.cannes_competition.loading)) return;
+
+      // AOS.init({
+      //   duration: 800,
+      //   offset: 100,
+      // });
+    }
+  }
 }
 </script>
 
 <style lang='scss' scoped>
 
   .home-page {
-    }
+    background: url(./assets/image/drstrange.jpg) no-repeat fixed center center;
+    background-size: cover;
+  }
 
   .article {
     width: 100%;
+    padding: 250px 0;
     background-color: $main-black;
     
     .article__inner {
@@ -99,7 +222,6 @@ export default {
   .article-canne {
     min-height: 200px;
     color: white;
-    padding: 250px 0;
   }
   .canne-competition-movies {
     @include flex(false, row, wrap, flex-start, center);
@@ -111,12 +233,140 @@ export default {
   .banner {
     width: 100%;
     height: 400px;
+
+    .content__button {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 30px;
+      text-align: center;
+      color: white;
+      font-weight: 700;
+    }
   }
   .banner-dr-strange {
-    @include flex(false, row, nowrap, flex-start, center);
+    @include flex(false, row, nowrap, space-between, center);
 
-    padding: 0 40px;
-    background: url(./assets/image/movie-banner.jpg) no-repeat top -40px center;
-    background-size: 100% auto;
+    padding: 0 60px 0 40px;
+    
+    .banner__content {
+      text-align: right;
+      font-weight: 700;
+      color: white;
+    }
+    .content__button {
+      font-size: 24px;
+      box-shadow: 0 0 16px rgba($main-black, 0.5);
+      background-color: #FB0000;
+    }
+  }
+
+  .article-marvle {
+    position: relative;
+  }
+  .marvle-movies {
+    @include flex(false, row, wrap, flex-start, flex-start);
+
+    gap: 24px;
+  }
+
+  .banner-advertisement {
+    height: auto;
+    padding: 0 0 150px;
+    background-color: $main-black;
+  }
+  .banner__video {
+    @include flex(false, row, nowrap, center, center);
+
+    width: 100%;
+    height: 40vw;
+    margin-bottom: 150px;
+    overflow: hidden;
+    position: relative;
+    
+    .video {
+      width: 100%;
+      height: auto;
+    }
+    .video__text {
+      width: 100%;
+      text-align: center;
+      line-height: 1;
+      font-size: 16vw;
+      letter-spacing: -0.08em;
+      font-weight: 700;
+      position: absolute;
+      bottom: -3vw;
+      left: 0;
+      color: $main-black;
+      background: linear-gradient(to bottom, transparent, $main-black 70%) no-repeat center center;
+      background-size: 100%, 100%;
+    }
+  }
+
+  .advertisement__title {
+    text-align: center;
+    font-weight: 700;
+    color: $main-orange;
+    margin-bottom: 80px;
+
+    .logo-image {
+      width: auto;
+      height: 45px;
+      margin-bottom: -5px
+    }
+  }
+
+  .kinderfest-membership {
+    @include flex(false, row, nowrap, center, center);
+
+    gap: 0 40px;
+
+    .membership__item {
+      @include flex(false, column, nowrap, flex-start, center);
+
+      width: 280px;
+      height: 320px;
+      border-radius: 12px;
+      padding: 48px 36px 42px;
+      color: white;
+      text-align: center;
+      box-shadow: 6px 6px 20px rgba(black, 0.8), -6px -6px 20px rgba(white, 0.2);
+    }
+    .membership__title {
+      flex: 0 0 auto;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: $main-orange;
+    }
+    .membership__detail {
+      flex: 1 1 auto;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .membership__price {
+      @include flex(false, column, nowrap, flex-start, center);
+      
+      flex: 0 0 auto;
+      width: 100%;
+      gap: 8px;
+    }
+    .price__item {
+      @include flex(false, row, nowrap, space-between, center);
+
+      width: 95%;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background-color: rgba(white, 0.3);
+
+      .price__title {
+        font-size: 14px;
+        color: rgba(white, 0.7);
+      }
+      .price__won {
+        font-weight: 700;
+      }
+    }
   }
 </style>
