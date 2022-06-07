@@ -4,6 +4,11 @@ $icons: (
   "imdb": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3crect width='16' height='16' x='1' y='1' fill='%23F5C518' rx='3'/%3e%3cpath fill='black' d='M6 4.5a.5.5 0 0 0 0-1v1ZM4 14h-.5a.5.5 0 0 0 .5.5V14ZM4 4v-.5a.5.5 0 0 0-.5.5H4Zm0 10.5h3v-1H4v1ZM3.5 9v5h1V9h-1ZM7 8.5H4v1h3v-1ZM7 14v.5h.016a1.311 1.311 0 0 0 .114-.007 2.622 2.622 0 0 0 1.135-.382C8.921 13.701 9.5 12.91 9.5 11.5h-1c0 1.09-.421 1.549-.765 1.764a1.62 1.62 0 0 1-.733.236h-.006H7v.5Zm2.5-2.5c0-1.41-.579-2.201-1.235-2.611A2.621 2.621 0 0 0 7.006 8.5h-.005L7 9v.5h-.004.006l.04.003a1.621 1.621 0 0 1 .694.234c.343.214.764.673.764 1.763h1ZM6 3.5H4v1h2v-1ZM3.5 4v5h1V4h-1Z'/%3e%3cpath stroke='black' stroke-linecap='round' stroke-linejoin='round' d='M9 9V4l2.5 3L14 4v5m-1 2.5s1 .25 1 1.25S13 14 13 14H9v-2.5m4 0H9m4 0s1 0 1-1.25S13 9 13 9H9v2.5'/%3e%3c/svg%3e",
   "rotten-tomatoes": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cellipse cx='9' cy='9.5' fill='url(%23a)' rx='8' ry='7'/%3e%3cpath fill='%232A881B' d='m9 1.5 1.17 1.294 4.487-.708-2.834 1.122L17 3.5l-5.177.292 2.834 1.122-4.488-.708L9 5.5 7.83 4.206l-4.487.708 2.834-1.122L1 3.5l5.177-.292-2.834-1.122 4.488.708L9 1.5Z'/%3e%3cdefs%3e%3cradialGradient id='a' cx='0' cy='0' r='1' gradientTransform='matrix(0 14 -16 0 9 3.5)' gradientUnits='userSpaceOnUse'%3e%3cstop stop-color='%23FF9292'/%3e%3cstop offset='.286' stop-color='%23FF5656'/%3e%3cstop offset='.578' stop-color='%23DE4545'/%3e%3cstop offset='.76' stop-color='%23CE3C3C'/%3e%3cstop offset='1' stop-color='%23FF5656'/%3e%3c/radialGradient%3e%3c/defs%3e%3c/svg%3e",
   "metacritic": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3ccircle cx='9' cy='9' r='7.5' fill='%23333' stroke='%23FFD53F'/%3e%3cpath fill='white' d='m10.097 12.194-2.142-3.71c-.252-.437-.537-.73-.854-.88-.321-.155-.679-.12-1.074.108a1.394 1.394 0 0 0-.652.958 1.93 1.93 0 0 0 .015.699c.044.252.146.516.306.793l1.98 3.43-1.154.666L3.09 8.313l1.133-.654.228.395A2.506 2.506 0 0 1 5.629 6.64c.381-.22.756-.339 1.124-.357a2.12 2.12 0 0 1 1.06.205c.082-.435.248-.812.497-1.132.25-.32.548-.58.894-.78.658-.38 1.29-.471 1.892-.274.607.185 1.121.646 1.546 1.38l2.184 3.783-1.154.666-2.142-3.71c-.252-.437-.537-.73-.854-.88-.321-.155-.68-.12-1.074.108-.16.092-.299.219-.418.38a1.457 1.457 0 0 0-.236.552c-.042.2-.043.422-.003.667.04.245.133.5.278.768l2.028 3.513-1.154.666Z'/%3e%3c/svg%3e",
+  "facebook-flat": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cpath fill='white' fill-rule='evenodd' d='M17 9A8 8 0 1 1 1 9a8 8 0 0 1 16 0Zm-5.796-1.018H9.781v-.508c-.007-.63.324-.883.978-.89l.046.003c.122.006.303.014.539.048V5.352a5.09 5.09 0 0 0-1.03-.102c-1.327 0-2.16.73-2.16 2.071v.661H7.125v1.245h1.03v4.21H9.78v-4.21h1.423V7.982Z' clip-rule='evenodd'/%3e%3c/svg%3e",
+  "twitter-flat": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cpath fill='white' fill-rule='evenodd' d='M17 9A8 8 0 1 1 1 9a8 8 0 0 1 16 0Zm-4.073-2.749-.825.477A1.649 1.649 0 0 0 9.288 8.26c-.899-.101-2.046-.454-3.37-1.328-.05.186-.32 1.195.768 1.913l-.655-.176c.012.043.021.088.031.136.07.331.163.77 1.207 1.05l-.796-.214c.097.475.592.902 1.21 1.202-.724.325-1.543.415-2.433.177a4.121 4.121 0 0 0 7.315-3.18c.366-.32.58-.808.654-1.085l-.808.466-.004-.01-.007-.018c.29-.278.468-.722.527-.943Z' clip-rule='evenodd'/%3e%3c/svg%3e",
+  "youtube-flat": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cpath fill='white' fill-rule='evenodd' d='M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16ZM6.656 6.187c-.776 0-1.406.63-1.406 1.407v2.812c0 .777.63 1.406 1.406 1.406h4.688c.776 0 1.406-.63 1.406-1.406V7.594c0-.777-.63-1.407-1.406-1.407H6.656Zm1.757 3.828L10.171 9 8.413 7.985v2.03Z' clip-rule='evenodd'/%3e%3c/svg%3e",
+  "twitch-flat": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cpath fill='white' fill-rule='evenodd' d='M17 9A8 8 0 1 1 1 9a8 8 0 0 1 16 0ZM6 7l.749-.75h5.5V10l-1.5 1.5H9.5l-1 1h-.751v-1H6V7Zm5.749-.25H7v4h1.5v.75l1-.75h1.249l1-1v-3Zm-2.249 1H9V9.5h.5V7.75Zm.749 0h.5V9.5h-.5V7.75Z' clip-rule='evenodd'/%3e%3c/svg%3e",
+  "instagram-flat": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3e%3cpath fill='white' fill-rule='evenodd' d='M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16Zm1.333-11.001H7.665c-.92 0-1.667.746-1.667 1.667v2.668c0 .92.746 1.667 1.667 1.667h2.668c.92 0 1.667-.746 1.667-1.667V7.666C12 6.746 11.254 6 10.333 6ZM6.665 7.666a1 1 0 0 1 1-1h2.668a1 1 0 0 1 1 1v2.668a1 1 0 0 1-1 1H7.665a1 1 0 0 1-1-1V7.666Zm2.335 2a.667.667 0 1 0 0-1.333.667.667 0 0 0 0 1.334Zm0 .668a1.334 1.334 0 1 0 0-2.668 1.334 1.334 0 0 0 0 2.668ZM10.5 8a.333.333 0 1 0 0-.667.333.333 0 0 0 0 .667Z' clip-rule='evenodd'/%3e%3c/svg%3e",
   // "": "",
 );
 @function icons($name, $color: #000000) {
@@ -12,14 +17,14 @@ $icons: (
 
 i.icon {
   display: inline-block;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   background-repeat: no-repeat;
   background-size: cover;
 
   &.small {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
   &.medium {
     width: 36px;

@@ -29,6 +29,10 @@
     margin-bottom: 8px;
     position: relative;
 
+    @include responsive-1280 {
+      height: 23vw;
+    }
+
     .movie__poster-image {
       display: block;
       width: 100%;

@@ -58,7 +58,8 @@
         <Splide 
           class="related-movies"
           :options="{ 
-            perPage: 5,
+            autoWidth: true,
+            perPage: 1,
             gap: 16,
             perMove: 2,
             pagination: false,
@@ -304,9 +305,11 @@ export default {
     .related__item {
       @extend .movie-list--black-theme;
 
+      width: 150px;
+
       .movie__poster {
         width: 100%;
-        height: 250px;
+        height: 200px;
       }
     }
   }

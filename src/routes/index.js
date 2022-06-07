@@ -13,25 +13,40 @@ export default createRouter({
       path: "/",
       name: "home",
       component: homeView,
+      meta: {
+        footer_active: true,
+      }
     },
     {
       path: "/search",
       name: "search",
       component: searchView,
+      meta: {
+        footer_active: false,
+      }
     },
     {
       path: "/movie",
       name: "movieCollection",
       component: movieCollection,
+      meta: {
+        footer_active: true,
+      }
     },
     {
       path: "/movie/:id",
       name: "movie",
       component: movieView,
+      meta: {
+        footer_active: false,
+      }
     },
     {
       path: "/:notFound(.*)",
       component: notFound404,
+      meta: {
+        footer_active: true,
+      }
     }
   ]
 })

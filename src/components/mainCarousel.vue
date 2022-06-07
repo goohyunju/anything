@@ -117,11 +117,19 @@ export default {
     font-family: $ptd;
     position: relative;
     background-color: black;
+
+    @include responsive-custom(1024) {
+      height: 600px;
+    }
   }
 
   .carousel__item {
     width: 100%;
     height: 100vh;
+
+    @include responsive-custom(1024) {
+      height: 600px;
+    }
 
     .carousel__router {
       display: block;
@@ -137,6 +145,10 @@ export default {
       position: absolute;
       top: 0;
       left: 0;
+
+      @include responsive-custom(1024) {
+        padding: 40px;
+      }
       
       &.content--right-bottom {
         @include flex(false, column, nowrap, flex-end, flex-end);

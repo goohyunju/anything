@@ -66,8 +66,8 @@
       </div>
     </article>
 
-    <article class="banner banner-advertisement">
-      <div class="banner__video" data-aos="fade-up" data-aos-delay="100">
+    <article id="membership" class="banner banner-advertisement">
+      <div class="banner__video" data-aos="fade-up">
         <video class="video" autoplay loop>
           <source src="./assets/video/5star.mp4" type="video/mp4">
           <source src="./assets/video/5star.webm" type="video/webm">
@@ -83,6 +83,8 @@
           class="membership__item"
           v-for="member, index in membership.class"
           :key="index"
+          data-aos="fade-up"
+          :data-aos-delay="index * 200"
         >
           <p class="membership__title">{{member.name}}</p>
           <p class="membership__detail" v-html="member.detail"></p>
@@ -176,24 +178,20 @@ export default {
         }
       }
 
-      variables.loading = false;
+      this.$nextTick(() => {
+        variables.loading = false;
+      })
     },
   },
   mounted() {
     this.getMoviesByList(this.cannes_competition);
     this.getMoviesByList(this.marvle);
-
   },
-  watch: {
-    "marvle.loading": function(prev, now) {
-      // if(!(now && !this.cannes_competition.loading)) return;
-
-      // AOS.init({
-      //   duration: 800,
-      //   offset: 100,
-      // });
-    }
-  }
+  updated() {
+    AOS.init({
+      duration: 800,
+    });
+  },
 }
 </script>
 
@@ -212,6 +210,11 @@ export default {
     .article__inner {
       width: 1200px;
       margin: 0 auto;
+
+      @include responsive-1280 {
+        width: 100%;
+        padding: 0 32px;
+      }
     }
     .article__title {
       text-align: center;
