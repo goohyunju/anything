@@ -115,6 +115,12 @@ export default {
   .footer__top {
     @include flex(false, row, nowrap, space-between, center);
 
+    @include responsive-768 {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
     .footer__logo {
       display: block;
       width: auto;
@@ -128,10 +134,18 @@ export default {
     position: relative;
     right: -20px;
 
+    @include responsive-768 {
+      right: 0;
+    }
+
     .nav__item {
       color: white;
       padding: 12px 20px;
       transition: all 0.3s ease;
+
+      @include responsive-768 {
+        padding: 6px 10px;
+      }
 
       &:hover {
         font-weight: 700;
@@ -143,11 +157,22 @@ export default {
     @include flex(false, row, nowrap, space-between, center);
 
     border-top: 1px solid rgba(white, 0.3);
+    
+    @include responsive-768 {
+      justify-content: center;
+    }
+  }
+  .footer__paragraph {
+
+    @include responsive-768 {
+      display: none;
+    }
   }
   .footer__sns {
     @include flex(false, row, nowrap, flex-end, center);
 
     gap: 10px;
+
 
     .sns__item {
       display: block;

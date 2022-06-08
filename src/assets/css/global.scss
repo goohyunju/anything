@@ -32,6 +32,15 @@
     @include responsive-1280 {
       height: 23vw;
     }
+    @include responsive-custom(1024) {
+      height: 28vw;
+    }
+    @include responsive-768 {
+      height: 34vw;
+    }
+    @include responsive-375 {
+      height: 55vw;
+    }
 
     .movie__poster-image {
       display: block;

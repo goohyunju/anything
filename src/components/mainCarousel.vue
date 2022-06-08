@@ -121,6 +121,9 @@ export default {
     @include responsive-custom(1024) {
       height: 600px;
     }
+    @include responsive-768 {
+      height: 100vh;
+    }
   }
 
   .carousel__item {
@@ -129,6 +132,9 @@ export default {
 
     @include responsive-custom(1024) {
       height: 600px;
+    }
+    @include responsive-768 {
+      height: 100vh;
     }
 
     .carousel__router {
@@ -149,6 +155,10 @@ export default {
       @include responsive-custom(1024) {
         padding: 40px;
       }
+      @include responsive-768 {
+        justify-content: center !important;
+        align-items: center !important;
+      }
       
       &.content--right-bottom {
         @include flex(false, column, nowrap, flex-end, flex-end);
@@ -163,12 +173,22 @@ export default {
       .title__image {
         min-width: 400px;
         max-width: 500px;
+
+        @include responsive-768 {
+          min-width: unset;
+          max-width: unset;
+          width: 100%;
+        }
       }
     }
     .carousel__sub-title {
       font-size: 32px;
       font-weight: 600;
       line-break: 1;
+
+      @include responsive-custom(640) {
+        display: none;
+      }
     }
 
     .carousel__image {
@@ -180,6 +200,10 @@ export default {
 
       &.image--left {
         object-position: left center;
+
+        @include responsive-768 {
+          object-position: inherit;
+        }
       }
     }
   }

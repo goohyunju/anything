@@ -31,13 +31,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/global.scss";
 
   .movie__item {
     @extend .movie-list--black-theme;
 
     width: calc(20% - 19.2px);
     position: relative;
+
+    @include responsive-custom(1024) {
+      width: calc(25% - 24px);
+    }
+    @include responsive-768 {
+      width: calc(33.333% - 10px);
+    }
+    @include responsive-375 {
+      width: calc(50% - 8px);
+    }
   }
 
 </style>

@@ -5,7 +5,7 @@
     <article class="article article-canne">
       <div class="article__inner">
         <h2 class="article__title">제 75회 칸 영화제 경쟁부문</h2>
-        <ul class="canne-competition-movies">
+        <ul class="canne-competition-movies home-movie-list">
           
           <template v-if="!cannes_competition.loading">
             <movie-item
@@ -42,7 +42,7 @@
     <article class="article article-marvle">
       <div class="article__inner">
         <h2 class="article__title">최신 마블 영화 정주행</h2>
-        <ul class="marvle-movies">
+        <ul class="marvle-movies home-movie-list">
           <template v-if="!marvle.loading">
             <movie-item
               v-for="marvle in marvle.data"
@@ -76,7 +76,8 @@
       </div>
       <h2 class="advertisement__title">
         <img src="./assets/image/Kinderfest-logo.svg" alt="Kinderfest" class="logo-image">
-        를 자유롭게 즐겨보세요!
+        <span class="break-line"></span>
+         자유롭게 즐겨보세요!
       </h2>
       <ol class="kinderfest-membership">
         <li 
@@ -190,6 +191,7 @@ export default {
   updated() {
     AOS.init({
       duration: 800,
+      offest: 100,
     });
   },
 }
@@ -215,11 +217,30 @@ export default {
         width: 100%;
         padding: 0 32px;
       }
+      @include responsive-768 {
+        padding: 0 24px;
+      }
     }
     .article__title {
       text-align: center;
       color: $main-orange;
       margin-bottom: 50px;
+    }
+
+    .home-movie-list {
+      @include flex(false, row, wrap, flex-start, center);
+
+      gap: 24px;
+
+      @include responsive-custom(1024) {
+        gap: 32px;
+      }
+      @include responsive-768 {
+        gap: 15px;
+      }
+      @include responsive-375 {
+        gap: 16px;
+      }
     }
   }
   .article-canne {
@@ -227,15 +248,16 @@ export default {
     color: white;
   }
   .canne-competition-movies {
-    @include flex(false, row, wrap, flex-start, center);
-
-    gap: 24px;
     position: relative;
   }
 
   .banner {
     width: 100%;
     height: 400px;
+
+    @include responsive-768 {
+      height: 100vh;
+    }
 
     .content__button {
       display: inline-block;
@@ -249,8 +271,19 @@ export default {
   .banner-dr-strange {
     @include flex(false, row, nowrap, space-between, center);
 
-    padding: 0 60px 0 40px;
+    padding: 0 80px 0 40px;
+
+    @include responsive-768 {
+      padding: 100px 24px;
+      flex-direction: column;
+    }
     
+    .title__image {
+      
+      @include responsive-768 {
+        height: 130px;
+      }
+    }
     .banner__content {
       text-align: right;
       font-weight: 700;
@@ -260,16 +293,15 @@ export default {
       font-size: 24px;
       box-shadow: 0 0 16px rgba($main-black, 0.5);
       background-color: #FB0000;
+
+      @include responsive-768 {
+        font-size: 18px;
+      }
     }
   }
 
   .article-marvle {
     position: relative;
-  }
-  .marvle-movies {
-    @include flex(false, row, wrap, flex-start, flex-start);
-
-    gap: 24px;
   }
 
   .banner-advertisement {
@@ -317,12 +349,25 @@ export default {
       height: 45px;
       margin-bottom: -5px
     }
+    .break-line {
+      display: none;
+
+      @include responsive-custom(640) {
+        display: block;
+        max-height: 6px;
+      }
+    }
   }
 
   .kinderfest-membership {
     @include flex(false, row, nowrap, center, center);
 
     gap: 0 40px;
+
+    @include responsive-custom(1024) {
+      flex-direction: column;
+      gap: 32px 0;
+    }
 
     .membership__item {
       @include flex(false, column, nowrap, flex-start, center);
@@ -334,6 +379,7 @@ export default {
       color: white;
       text-align: center;
       box-shadow: 6px 6px 20px rgba(black, 0.8), -6px -6px 20px rgba(white, 0.2);
+
     }
     .membership__title {
       flex: 0 0 auto;

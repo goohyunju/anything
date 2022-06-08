@@ -121,6 +121,14 @@ export default {
     border: 2px solid $main-orange !important;
     background-color: white;
 
+    @include responsive-custom(1024) {
+      gap: 16px 0;
+      justify-content: flex-start;
+      border: unset !important;
+      flex-wrap: wrap;
+      background-color: transparent;
+    }
+
     * {
       font-family: $ptd;
     }
@@ -141,6 +149,16 @@ export default {
       background: white url(@/assets/image/mini-chevron-down.svg) no-repeat right 8px top 14px;
       background-size: 10px auto;
 
+      @include responsive-custom(1024) {
+        width: unset;
+        min-width: 120px;
+        padding-left: 16px;
+        border-radius: 15px;
+        margin-right: 16px;
+        color: white;
+        background-color: rgba(white, 0.5);
+      }
+
       &:focus,
       &:active {
         border: 0;
@@ -149,19 +167,38 @@ export default {
       &:focus-visible {
         border: 0;
         outline: 0;
-        color: $main-orange;
+        color: black;
+        font-weight: 700;
       }
     }
 
     .search__title {
       width: 400px;
       font-weight: 600;
+
+      @include responsive-custom(1024) {
+        width: calc(100% - 65px);
+        height: 45px;
+        padding: 0 20px;
+        border-radius: 30px 0 0 30px;
+        border: 2px solid $main-orange;
+        border-right-width: 0;
+        order: 1;
+      }
     }
     .search__quantity {
       width: 70px;
+
+      @include responsive-custom(1024) {
+        min-width: 80px;
+      }
     }
     .search__year {
       width: 140px;
+
+      @include responsive-custom(1024) {
+        margin-right: 0;
+      }
     }
     .search__apply {
       height: 32px;
@@ -170,6 +207,16 @@ export default {
       color: $main-orange;
       font-weight: 600;
       background-color: white;
+
+      @include responsive-custom(1024) {
+        width: 65px;
+        height: 45px;
+        border-radius: 0 30px 30px 0;
+        border: 2px solid $main-orange;
+        border-left-width: 0;
+        padding: 0;
+        order: 2;
+      }
     }
   }
 
