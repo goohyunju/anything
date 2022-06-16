@@ -44,6 +44,15 @@ export default {
     }
   },
   methods: {
+    animationFrame(callback) {
+      let timeout = null;
+      return function() {
+        if(timeout) {
+          window.cancelAnimationFrame(timeout);
+        }
+        timeout = window.requestAnimationFrame(function() {callback();});
+      };
+    },
     scrollHeaderActive() {
       const scroll = window.scrollY;
       const direction = this.save_scroll - scroll;
@@ -64,7 +73,7 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("scroll", this.scrollHeaderActive);
+    window.addEventListener("scroll", this.animationFrame(this.scrollHeaderActive));
   },
 }
 </script>
@@ -97,6 +106,10 @@ export default {
       display: block;
       width: auto;
       height: 30px;
+
+      @include responsive-375 {
+        height: 24px;
+      }
     }
   }
 
@@ -110,6 +123,10 @@ export default {
       color: white;
       text-align: center;
       transition: font 0.3s ease;
+
+      @include responsive-375 {
+        padding: 12px 0 5px;
+      }
 
       &.nav--active {
         color: $main-orange;

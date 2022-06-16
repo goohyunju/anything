@@ -6,51 +6,56 @@
       'movie--no-poster': !movie.Poster || movie.Poster == 'N/A'
     }"
     :style="{
-      backgroundImage: !movie.Poster || movie.Poster == 'N/A' ? 'none' : 'url(' + String(movie.Poster).replace('SX300', 'SX700') + ')'
+      backgroundImage: 'url(' + changePosterResolution(movie.Poster) + ')',
     }"
   >
     <section class="movie-detail">
-      <h2 class="detail__item movie__title">{{movie.Title}}</h2>
-      <p class="detail__item movie__info-data">
-        <span class="info__item year">{{movie.Year}}</span>
-        <span 
-          v-if="Number(movie.Runtime) == NaN"
-          class="info__item runtime
-        ">{{parseInt(movie.Runtime, 10)}}분</span>
-        <span class="info__item genre">{{movie.Genre}}</span>
-      </p>
-      <div v-if="rates.length !== 0" class="detail__item movie__rates">
-        <span 
-          v-for="rate in rates"
-          :key="rate.name"
-          class="rate__item" 
-        >
-          <i 
-            class="icon"
-            :class="rate.name"
-          ></i>
-          {{rate.value}}
-        </span>
+      <div class="mobile-movie-poster">
+        <img :src="changePosterResolution(movie.Poster)" :alt="movie.Title + ' 포스터'">
       </div>
-      <div v-if="movie.Plot != 'N/A'" class="detail__item movie__plot">
-        {{movie.Plot}}
-      </div>
-      <div class="detail__item movie__directing">
-        <div class="directing__item category-label">
-          <span class="category__name">감독</span> {{movie.Director}}
+      <div class="movie-info">
+        <h2 class="detail__item movie__title">{{movie.Title}}</h2>
+        <p class="detail__item movie__info-data">
+          <span class="info__item year">{{movie.Year}}</span>
+          <span 
+            v-if="Number(movie.Runtime) == NaN"
+            class="info__item runtime
+          ">{{parseInt(movie.Runtime, 10)}}분</span>
+          <span class="info__item genre">{{movie.Genre}}</span>
+        </p>
+        <div v-if="rates.length !== 0" class="detail__item movie__rates">
+          <span 
+            v-for="rate in rates"
+            :key="rate.name"
+            class="rate__item" 
+          >
+            <i 
+              class="icon"
+              :class="rate.name"
+            ></i>
+            {{rate.value}}
+          </span>
         </div>
-        <div class="directing__item category-label">
-          <span class="category__name">각본</span> {{movie.Writer}}
+        <div v-if="movie.Plot != 'N/A'" class="detail__item movie__plot">
+          {{movie.Plot}}
         </div>
-        <div class="directing__item category-label">
-          <span class="category__name">제공</span> {{movie.Production}}
+        <div class="detail__item movie__directing">
+          <div class="directing__item category-label">
+            <span class="category__name">감독</span> {{movie.Director}}
+          </div>
+          <div class="directing__item category-label">
+            <span class="category__name">각본</span> {{movie.Writer}}
+          </div>
+          <div class="directing__item category-label">
+            <span class="category__name">제공</span> {{movie.Production}}
+          </div>
+          <div class="directing__item category-label">
+            <span class="category__name">출연</span> {{movie.Actors}}
+          </div>
         </div>
-        <div class="directing__item category-label">
-          <span class="category__name">출연</span> {{movie.Actors}}
+        <div class="detail__item movie__box-office category-label">
+          <span class="category__name">매출</span> {{movie.BoxOffice}}
         </div>
-      </div>
-      <div class="detail__item movie__box-office category-label">
-        <span class="category__name">매출</span> {{movie.BoxOffice}}
       </div>
       
       <div class="related-movies-wrapper" v-if="related_movies.length">
@@ -189,6 +194,9 @@ export default {
       
       this.related_movies = state.movies;
     },
+    changePosterResolution(data) {
+      return !data || data == 'N/A' ? 'none' : String(data).replace('SX300', 'SX700');
+    }
   },
   mounted() {
     this.getMovie();
@@ -212,14 +220,16 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
 
+    @include responsive-1280 {
+      background: unset !important;
+    }
+
     &.movie--no-poster {
       background-image: url(@/assets/image/kinderfest-poster.svg) !important;
     }
   }
 
   .movie-detail {
-    @include flex(false, column, nowrap, flex-start, flex-start);
-
     position: relative;
     width: calc(100% - 42vh);
     min-height: 100vh;
@@ -227,11 +237,54 @@ export default {
     padding: 100px 24px 100px 19%;
     background-image: linear-gradient(to right, transparent, $main-black 18%);
 
+    @include responsive-1280 {
+      @include flex(false, row, wrap, stretch, flex-start);
+
+      width: 100%;
+      padding: 100px 32px;
+      flex-wrap: wrap;
+    }
+    @include responsive-768 {
+      flex-direction: column;
+    }
+
     .detail__item {
       width: 100%;
     }
   }
 
+  .mobile-movie-poster {
+    display: none;
+
+    @include responsive-1280 {
+      display: block;
+      flex: 0 0 auto;
+      margin-right: 40px;
+    }
+    @include responsive-768 {
+      margin: 0 0 60px;
+    }
+
+    img {
+      display: block;
+      width: 250px;
+      height: auto;
+
+      @include responsive-768 {
+        width: 100%;
+      }
+    }
+  }
+
+  .movie-info {
+
+    @include responsive-1280 {
+      flex: 1 1 0;
+    }
+    @include responsive-768 {
+      flex: 0 0 auto;
+    }
+  }
   .movie__title {
     max-width: 400px;
     text-align: left;

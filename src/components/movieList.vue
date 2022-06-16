@@ -50,9 +50,8 @@ export default {
 <style lang="scss" scoped>
 
   .movie-list {
-    width: 1200px;
-    margin: 100px auto !important;
-    padding: 24px;
+    width: 100%;
+    margin: 100px 0 !important;
     position: relative;
     background-color: $main-black;
   }
@@ -81,7 +80,7 @@ export default {
   }
   .movie__inner {
     @include flex(false, row, wrap, flex-start, flex-start);
+    @extend .movie-list--default;
 
-    gap: 24px;
   }
 </style>

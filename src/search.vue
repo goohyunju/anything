@@ -13,8 +13,7 @@ import movieList from "@/components/movieList.vue"
 export default {
   name: "searchView",
   components: {
-    searchForm,
-    movieList,
+    searchForm, movieList,
   },
   computed: {
     movie_list() {

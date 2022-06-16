@@ -37,6 +37,21 @@
           perMove: 2,
           pagination: false,
           arrowPath: arrow_path,
+          breakpoints: {
+            1024: {
+              perPage: 4,
+            },
+            768: {
+              autoWidth: true,
+              perPage: 3,
+              arrows: false,
+              drag: 'free',
+
+            },
+            375: {
+              perPage: 2,
+            },
+          }
         }"
         :aria-label="`${genre.name} 장르 영화 추천 모음 | movie ${genre.value} genre collection`"
         class="collection-movie-list splide"
@@ -141,11 +156,22 @@ export default {
     line-height: 36px;
     margin-bottom: 24px;
 
+    @include responsive-768 {
+      flex-direction: column;
+    }
+
     .like-present {
       display: inline-block;
       width: auto;
-      height: 36px;
+      height: 32px;
       margin-right: 16px;
+
+      @include responsive-768 {
+        margin-bottom: 8px;
+      }
+      @include responsive-375 {
+        height: 28px;
+      }
     }
   }
 
@@ -155,6 +181,19 @@ export default {
     width: 1200px;
     margin: 0 auto 120px;
     gap: 16px;
+
+    @include responsive-1280 {
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 32px;
+    }
+    @include responsive-768 {
+      padding: 0 24px;
+      gap: 12px;
+    }
+    @include responsive-375 {
+      padding: 0 16px;
+    }
 
     .genre__item {
       padding: 6px 16px;
@@ -176,6 +215,17 @@ export default {
     width: 1200px;
     margin: 0 auto 120px;
 
+    @include responsive-1280 {
+      width: 100%;
+      padding: 0 60px;
+    }
+    @include responsive-768 {
+      padding: 0 24px;
+    }
+    @include responsive-375 {
+      padding: 0 16px;
+    }
+
     .collection__title {
       margin-bottom: 16px;
       color: white;
@@ -187,6 +237,18 @@ export default {
 
     .movie__item {
       @extend .movie-list--black-theme;
+
+      @include responsive-768 {
+        max-width: 180px;
+      }
+    }
+
+    .movie__poster {
+
+      @include responsive-768 {
+        width: 180px !important;
+        height: 260px !important;
+      }
     }
   }
   

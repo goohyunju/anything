@@ -66,3 +66,7 @@
     @content;
   }
 }
+
+@function vw($width: 1920, $value: 10) {
+  @return ($value / ($width * 0.01)) + vw;
+}
