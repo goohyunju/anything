@@ -4,13 +4,16 @@
       <img src="../assets/image/Kinderfest-logo.svg" alt="kinderfest | 킨더페스트" class="footer__logo">
 
       <nav class="footer__nav">
-        <a 
-          v-for="nav in footer_nav"
-          :key="nav.name"
-          :href="nav.path" 
+        <router-link 
+          v-for="nav, index in footer_nav"
+          :key="nav.name + '-' + index"
+          :to="{name: nav.name}"
           class="nav__item"
           :class="nav.name"
-        >{{nav.title}}</a>
+          @click="scrollTo(nav)"
+        >
+          {{nav.title}}
+        </router-link>
       </nav>
     </div>
     <div class="footer__bottom footer__item">
@@ -24,9 +27,9 @@
           :key="sns.name"
           class="sns__item"
         >
-          <a href="/" class="sns__router">
+          <router-link class="sns__router" :to="{path: '/'}">
             <i class="icon" :class="sns.icon + '-flat'"></i>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -39,56 +42,32 @@ export default {
   data() {
     return {
       footer_nav: [
-        {
-          title: "메인",
-          name: "main",
-          path: "/",
-        },
-        {
-          title: "검색",
-          name: "search",
-          path: "/search",
-        },
-        {
-          title: "추천 영화",
-          name: "search",
-          path: "/movie",
-        },
-        {
-          title: "요금제",
-          name: "membership",
-          path: "/#membership",
-        },
+        { title: "메인", name: "home", },
+        { title: "검색", name: "search", },
+        { title: "추천 영화", name: "movieCollection", },
+        { title: "요금제", name: "home", hash: "membership"},
       ],
       sns_list: [
-        {
-          name: "facebook",
-          icon: "facebook",
-          path: "",
-        },
-        {
-          name: "twitter",
-          icon: "twitter",
-          path: "",
-        },
-        {
-          name: "youtube",
-          icon: "youtube",
-          path: "",
-        },
-        {
-          name: "twitch",
-          icon: "twitch",
-          path: "",
-        },
-        {
-          name: "instagram",
-          icon: "instagram",
-          path: "",
-        },
+        { name: "facebook", icon: "facebook", path: "", },
+        { name: "twitter", icon: "twitter", path: "", },
+        { name: "youtube", icon: "youtube", path: "", },
+        { name: "twitch", icon: "twitch", path: "", },
+        { name: "instagram", icon: "instagram", path: "", },
       ]
     }
   },
+  methods: {
+    scrollTo(data) {
+      if(data.hash == "membership") {
+        const target = document.getElementById(data.hash);
+        const top = target.offsetTop - 70;
+        
+        window.scrollTo({top: top, left: 0});
+      } else {
+        window.scrollTo(0, 0);
+      }
+    },
+  }
 }
 </script>
 

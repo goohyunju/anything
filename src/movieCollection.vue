@@ -5,14 +5,15 @@
       맞춤형 영화
     </h1>
     <nav class="recommand-genre">
-      <a 
+      <a
         v-for="genre in recommand_tag"
         :key="genre.value"
-        :href="`#${genre.value}`" 
         class="genre__item"
         :class="{'genre__item--active': active_tag == genre.value}"
-        @click="active_tag = genre.value"
-      >{{genre.name}}</a>
+        @click="moveToGenre(genre.value)"
+      >
+        {{genre.name}}
+      </a>
     </nav>
 
     
@@ -25,6 +26,7 @@
       <h2 
         v-if="!loading"
         :id="genre.value" 
+        :ref="genre.value"
         class="collection__title"
       >#{{genre.name}}</h2>
 
@@ -61,13 +63,13 @@
           :key="movie.imdbID"
           class="movie__item"
         >
-          <a :href="`/movie/${movie.imdbID}`" class="movie__router">
+          <router-link class="movie__router" :to="{name: 'movie', params: {id: movie.imdbID}}">
             <div class="splide__slide__container movie__poster">
               <img :src="movie.Poster" :alt="movie.Title + 'poster'" class="movie__poster-image">
             </div>
             <p class="movie__title">{{movie.Title}}</p>
             <p class="movie__year">{{parseInt(movie.Year, 10)}}</p>
-          </a>
+          </router-link>
         </SplideSlide>
 
       </Splide>
@@ -125,6 +127,13 @@ export default {
           this.loading = false;
         })
       })
+    },
+    moveToGenre(genre) {
+      const target = this.$refs[genre];
+      const top = target[0].offsetTop - 70;
+
+      this.active_tag = genre;
+      window.scrollTo({top: top, left: 0, behavior: 'smooth'});
     },
   },
   mounted() {

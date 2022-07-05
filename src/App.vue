@@ -28,7 +28,7 @@ export default {
   }
   #app {
     min-height: 100%;
-    font-family: 'pretendard';
+    font-family: $ptd !important;
     box-sizing: border-box;
   }
 </style>

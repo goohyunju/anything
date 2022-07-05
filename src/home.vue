@@ -35,7 +35,11 @@
         <img src="@/assets/image/banner-logo1.png" alt="닥터 스트레인지: 대 혼돈의 멀티버스" class="title__image">
       </h2> 
       <p class="banner__content">
-        <a href="movie/tt9419884" data-aos="zoom-in" data-aos-delay="100" class="content__button">지금 보러가기</a>
+        <router-link 
+          :to="{name: 'movie', params: { id: 'tt9419884'}}"
+          data-aos="zoom-in" data-aos-delay="100" 
+          class="content__button"
+        >지금 보러가기</router-link>
       </p>
     </article>
     

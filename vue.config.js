@@ -3,11 +3,15 @@ module.exports = defineConfig({
   transpileDependencies: true,
   css: {
     loaderOptions: {
-      sass: {
+      scss: {
         additionalData: `
-          @import "@/assets/css/global.scss";
+        @import "@/assets/css/global.scss";
         `,
       }
     }
+  },
+  publicPath: "/kinder/",
+  devServer: {
+    pathRewrite: {"^/": "/kinder"},
   }
 })

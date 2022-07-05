@@ -58,9 +58,13 @@
         </div>
       </div>
       
-      <div class="related-movies-wrapper" v-if="related_movies.length">
+      <div 
+        v-if="related_movies.length"
+        class="related-movies-wrapper" 
+      >
         <h3 class="related-movies__title">관련 영화</h3>
         <Splide 
+          v-show="related_active"
           class="related-movies"
           :options="{ 
             autoWidth: true,
@@ -76,7 +80,10 @@
             :key="movie.imdbID"
             class="related__item"
           >
-            <a :href="`/movie/${movie.imdbID}`" class="movie__router">
+            <router-link 
+              class="movie__router" 
+              :to="{name: 'movie', params: {id: movie.imdbID}}"
+            >
               <div class="movie__poster">
                 <p class="movie__poster--inactive">
                   <span class="poster__title">No Poster</span>
@@ -89,7 +96,7 @@
                 >
               </div>
               <p class="movie__title">{{movie.Title}}</p>
-            </a>
+            </router-link>
           </SplideSlide>
         </Splide>
       </div>
@@ -112,8 +119,16 @@ export default {
     return {
       movie: {},
       related_movies: [],
+      related_active: false,
       rates: {},
     }
+  },
+  watch: {
+    $route(now, prev) {
+      if(now.params.id !== prev.params.id) {
+        window.location.reload();
+      }
+    },
   },
   computed: {
     id() {
@@ -193,6 +208,10 @@ export default {
       });
       
       this.related_movies = state.movies;
+
+      this.$nextTick(() => {
+        this.related_active = true;
+      })
     },
     changePosterResolution(data) {
       return !data || data == 'N/A' ? 'none' : String(data).replace('SX300', 'SX700');

@@ -4,7 +4,7 @@
     <p class="not-found__content">
       혹시 보고싶었던 영화 이름이<br>기억이 안 나시나요?
     </p>
-    <router-link to="/movie" class="back-to-search-button">추천 영화 보러가기</router-link>
+    <router-link :to="{name: 'collection'}" class="back-to-search-button">추천 영화 보러가기</router-link>
   </section>
 </template>
 

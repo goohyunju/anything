@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "pretendard";
+  font-family: "Pretendard";
   src: local("Pretendard Regular"),
         url(~@/assets/font/Pretendard-Regular.subset.woff) format("font-woff"),
         url(~@/assets/font/Pretendard-Regular.subset.woff2) format("woff2");
@@ -8,7 +8,7 @@
   font-stretch: normal;
 }
 @font-face {
-  font-family: "pretendard";
+  font-family: "Pretendard";
   src: local("Pretendard SemiBold"),
         url(~@/assets/font/Pretendard-SemiBold.subset.woff) format("font-woff"),
         url(~@/assets/font/Pretendard-SemiBold.subset.woff2) format("woff2");
@@ -17,7 +17,7 @@
   font-stretch: normal;
 }
 @font-face {
-  font-family: "pretendard";
+  font-family: "Pretendard";
   src: local("Pretendard Bold"),
         url(~@/assets/font/Pretendard-Bold.subset.woff) format("font-woff"),
         url(~@/assets/font/Pretendard-Bold.subset.woff2) format("woff2");
@@ -26,4 +26,4 @@
   font-stretch: normal;
 }
 
-$ptd: "pretendard";
+$ptd: "Pretendard";

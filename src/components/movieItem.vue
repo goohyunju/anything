@@ -1,6 +1,9 @@
 <template>
   <li class="movie__item">
-    <a :href="`/movie/${movie.imdbID}`" class="movie__router">
+    <router-link 
+      class="movie__router" 
+      :to="{name: 'movie', params: {id: movie.imdbID}}"
+    >
       <div class="movie__poster">
         <p class="movie__poster--inactive">
           <span class="poster__title">No Poster</span>
@@ -14,7 +17,7 @@
       </div>
       <p class="movie__title">{{movie.Title}}</p>
       <p class="movie__year">{{movie.Year}}</p>
-    </a>
+    </router-link>
   </li>
 </template>
 
