@@ -11,8 +11,8 @@ module.exports = defineConfig({
       }
     }
   },
-  publicPath: "/kinder/",
-  devServer: {
-    pathRewrite: {"^/": "/kinder"},
-  }
+  // publicPath: "/kinder/",
+  // devServer: {
+  //   pathRewrite: {"^/": "/kinder"},
+  // }
 })

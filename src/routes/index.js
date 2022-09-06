@@ -7,7 +7,8 @@ import movieCollection from "@/movieCollection"
 import notFound404 from "@/notFound404"
 
 export default createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
