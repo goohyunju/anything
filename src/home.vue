@@ -72,7 +72,7 @@
 
     <article id="membership" class="banner banner-advertisement">
       <div class="banner__video" data-aos="fade-up">
-        <video class="video" autoplay loop>
+        <video class="video" autoplay loop muted>
           <source src="./assets/video/5star.mp4" type="video/mp4">
           <source src="./assets/video/5star.webm" type="video/webm">
         </video>
