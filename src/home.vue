@@ -79,7 +79,7 @@
         <p class="video__text">Kinderfest</p>
       </div>
       <h2 class="advertisement__title">
-        <img src="./assets/image/Kinderfest-logo.svg" alt="Kinderfest" class="logo-image">
+        <img src="./assets/image/coda.svg" alt="coda" class="logo-image">
         <span class="break-line"></span>
          자유롭게 즐겨보세요!
       </h2>
@@ -227,7 +227,7 @@ export default {
     }
     .article__title {
       text-align: center;
-      color: $main-orange;
+      color: #fffff9;
       margin-bottom: 50px;
     }
 

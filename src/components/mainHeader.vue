@@ -7,7 +7,7 @@
   >
     <h1 class="main-logo">
       <router-link class="logo__link" :to="{name: 'home'}">
-        <img class="logo__image" src="../assets/image/Kinderfest-logo.svg" alt="kinderfest | 킨더페스트 ∙ 세상의 모든 영화 검색">
+        <img class="logo__image" src="../assets/image/coda.svg" alt="cada | 코다 ∙ 세상의 모든 영화 검색">
       </router-link>
     </h1>
     <nav class="main-nav">

@@ -24,7 +24,7 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: $main-black;
+    background-color: #dddd;
   }
   #app {
     min-height: 100%;

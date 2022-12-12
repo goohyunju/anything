@@ -1,7 +1,7 @@
 <template>
   <footer class="main-footer">
     <div class="footer__top footer__item">
-      <img src="../assets/image/Kinderfest-logo.svg" alt="kinderfest | 킨더페스트" class="footer__logo">
+      <img src="../assets/image/coda.svg" alt="coda | 코다" class="footer__logo">
 
       <nav class="footer__nav">
         <router-link 
@@ -19,7 +19,7 @@
     <div class="footer__bottom footer__item">
       <p class="footer__paragraph">
         어릴 때 축제 같이
-        영화를 즐길 땐, 킨더페스트
+        영화를 즐길 땐, 코다
       </p>
       <ul class="footer__sns">
         <li 

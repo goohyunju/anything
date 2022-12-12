@@ -4,7 +4,7 @@
       type="text" 
       class="search__title search__field" 
       v-model="search.title" 
-      placeholder="영화, 시리즈와 더 많은 것을 검색하세요!"
+      placeholder="검색하세요!"
       @keyup.enter="searchMovie"
     >
     

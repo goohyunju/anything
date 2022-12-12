@@ -58,10 +58,10 @@ export default {
       carousel: [
         {
           name: "american-chef",
-          title: "아메리칸 셰프",
-          title_image: require("../assets/image/american-chef-logo.png"),
-          sub_title: "뉴 올리언스에서 LA까지,<br>푸드트럭 셰프의 맛있는 도전!",
-          image: require("@/assets/image/main-carousel1.jpg"),
+          // title: "아메리칸 셰프",
+          // title_image: require("../assets/image/american-chef-logo.png"),
+          sub_title: "내가 네 시어머니다.<br>항상 예고 없이 찾아온다구",
+          image: require("@/assets/image/main-atj.jpeg"),
           link: "movie/tt2883512",
           style: {
             title_position: ["right", "bottom"],

@@ -1,7 +1,7 @@
 <template>
   <main class="movie-collection-page">
     <h1 class="collection-title">
-      <img src="./assets/image/collection-title.svg" alt="마치 생일선물 같은" class="like-present">
+      <!-- <img src="./assets/image/collection-title.svg" alt="마치 생일선물 같은" class="like-present"> -->
       맞춤형 영화
     </h1>
     <nav class="recommand-genre">
