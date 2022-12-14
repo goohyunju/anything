@@ -76,7 +76,7 @@
           <source src="./assets/video/5star.mp4" type="video/mp4">
           <source src="./assets/video/5star.webm" type="video/webm">
         </video>
-        <p class="video__text">Kinderfest</p>
+        <p class="video__text">coda</p>
       </div>
       <h2 class="advertisement__title">
         <img src="./assets/image/coda.svg" alt="coda" class="logo-image">
@@ -138,7 +138,7 @@ export default {
       membership: {
         class: [
           {
-            name: "킨더 무제한",
+            name: "코다 무제한",
             detail: `PC, 스마트폰, 태블릿, 크롬캐스트에서
             모든 컨텐츠를 즐겨요!<br><br>
             <strong>720P</strong>의 고화질로 감상`,
@@ -146,7 +146,7 @@ export default {
             year_price: 56000,
           },
           {
-            name: "킨더 무제한 플러스",
+            name: "코다 무제한 플러스",
             detail: `PC, 스마트폰, 태블릿, 크롬캐스트, 스마트티비에서<br>
             모든 컨텐츠를 즐겨요!<br><br>
             <strong>1080P</strong>의 초고화질로 감상`,
@@ -154,7 +154,7 @@ export default {
             year_price: 92000,
           },
           {
-            name: "킨더 투게더",
+            name: "코다 투게더",
             detail: `PC, 스마트폰, 태블릿, 크롬캐스트, 스마트티비에서
             모든 컨텐츠를 최대 3명과 함께 즐겨요!<br><br>
             <strong>1080P</strong>의 초고화질로 감상`,
