@@ -99,7 +99,7 @@ function _fetchMovie(payload) {
 
   return new Promise( (resolve, reject) => {
     
-    axios.get(`http://www.omdbapi.com/?&apikey=${OMDB_MY_KEY}`, {params: params})
+    axios.get(`https://www.omdbapi.com/?&apikey=${OMDB_MY_KEY}`, {params: params})
       .then(response => {
         if(response.data.Error) reject(response.data.Error)
         resolve(response);
