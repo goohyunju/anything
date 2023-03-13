@@ -1,6 +1,7 @@
 <template>
   <main-header />
   <Router-view />
+  <script src="https://buttr.dev/butter.js" data-site-id="xtyyhtdtap" async></script>
   <main-footer v-if="$route.meta.footer_active"/>
 </template>
 
